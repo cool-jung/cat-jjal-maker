@@ -1,17 +1,22 @@
-import CatItem from "./CatItem"
+import CatItem from "./CatItem";
+import "./index.css";
 
-function Favorites({favorites}){
-    if(favorites.length===0){
-        return <div> 사진 위 하트를 눌러 고양이 사진을 저장해봐요!</div>
-    }
+function Favorites({ favorites }) {
+  if (favorites.length === 0) {
     return (
-        <ul className="favorites">
-        {favorites.map((cat)=>(
-            <CatItem img={cat} key={cat}/>
-        ))}
-        
-        </ul>
+      <div>
+        {" "}
+        Press the heart above the picture and save the picture of the cat!
+      </div>
     );
+  }
+  return (
+    <ul className="favorites">
+      {favorites.map((cat) => (
+        <CatItem img={cat} key={cat} />
+      ))}
+    </ul>
+  );
 }
 
 export default Favorites;

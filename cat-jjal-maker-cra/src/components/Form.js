@@ -10,7 +10,7 @@ const Form = ({ updateMainCat }) => {
     console.log(includesHangul(userValue));
     setErrorMessage("");
     if (includesHangul(userValue)) {
-      setErrorMessage("한글은 입력할 수 없습니다.");
+      setErrorMessage("You can only enter English.");
     }
     setValue(userValue.toUpperCase());
   }
@@ -19,22 +19,33 @@ const Form = ({ updateMainCat }) => {
     e.preventDefault();
     setErrorMessage("");
     if (value === "") {
-      setErrorMessage("빈 값으로 만들 수 없습니다.");
+      setErrorMessage("Cannot be empty.");
       return;
     }
     updateMainCat(value);
   }
   return (
-    <form onSubmit={handelFormSubmit}>
-      <input
-        type="text"
-        name="name"
-        placeholder="영어 대사를 입력해주세요"
-        value={value}
-        onChange={handleInputChange}
-      />
-      <button type="submit">생성</button>
-      <p style={{ color: "red" }}>{errorMessage}</p>
+    <form onSubmit={handelFormSubmit} class="row g-3">
+      <div class="row justify-content-center mt-5">
+        <div class="col-auto">
+          <input
+            type="text"
+            name="name"
+            placeholder="Please enter your lines"
+            value={value}
+            onChange={handleInputChange}
+            class="form-control"
+          />
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary mb-3">
+            MAKE
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <p style={{ color: "red" }}>{errorMessage}</p>
+      </div>
     </form>
   );
 };
